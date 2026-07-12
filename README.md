@@ -31,20 +31,46 @@ docs/
     13-modelo-de-dados.md
   ROADMAP.md         # Roadmap por fases (fonte do PDF)
   FEATURES.md        # Tracker VIVO — atualizado a cada implementação
-data/                # Definições data-driven de exemplo
+data/                # Definições data-driven (fonte da verdade)
   rarities.json
   refinement.json
   items.sample.json
+src/                  # Aplicação (Fase 0+)
+  core/               # regras puras, sem UI (RNG, validação de dados)
+  data/               # acesso único aos dados validados
+  state/              # store Zustand
+  ui/combat/          # PhaserMount — seam da cena de ação
+  app/                # App shell React
 scripts/
   build-pdf.mjs      # Renderiza o roadmap para PDF via Chromium/Playwright
 dist/
-  Aetherforge-Roadmap.pdf   # PDF gerado
+  Aetherforge-Roadmap.pdf   # PDF gerado (versionado)
+build/                # saída do build web (ignorada no git)
+```
+
+## Rodar o jogo (dev)
+
+> Fase 0 (Fundações) concluída — o app já sobe. Ver `docs/FEATURES.md`.
+
+```bash
+npm install
+npm run dev        # servidor de desenvolvimento (Vite)
+npm run build      # build de produção → ./build
+npm run preview    # serve o build
+```
+
+Qualidade:
+
+```bash
+npm run typecheck  # tsc -b
+npm run lint       # ESLint (flat config)
+npm test           # Vitest
 ```
 
 ## Gerar o PDF do roadmap
 
 ```bash
-node scripts/build-pdf.mjs
+npm run pdf        # ou: node scripts/build-pdf.mjs
 # Saída: dist/Aetherforge-Roadmap.pdf
 ```
 

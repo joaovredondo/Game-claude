@@ -4,7 +4,7 @@
 
 **Status:** ⬜ Pendente · 🟨 Em andamento · ✅ Concluído · 🧊 Adiado
 
-**Última atualização:** 2026-07-12 — _estruturação inicial do design e roadmap._
+**Última atualização:** 2026-07-12 — _Fase 0 (Fundações) concluída (commit `a256686`)._
 
 ---
 
@@ -12,7 +12,7 @@
 
 | Fase | Features | Concluídas | Progresso |
 |------|----------|-----------|-----------|
-| 0 — Fundações | 7 | 0 | 0% |
+| 0 — Fundações | 7 | 7 | ✅ 100% |
 | 1 — Núcleo de Itens | 7 | 0 | 0% |
 | 2 — Inventário & Equipamento | 6 | 0 | 0% |
 | 3 — Refino & Forja Ativa | 8 | 0 | 0% |
@@ -21,7 +21,7 @@
 | 6 — Polish Visual | 5 | 0 | 0% |
 | 7 — Persistência & Meta | 5 | 0 | 0% |
 | 8 — Conteúdo & Live-ops | 5 | 0 | 0% |
-| **TOTAL** | **56** | **0** | **0%** |
+| **TOTAL** | **56** | **7** | **12.5%** |
 
 ---
 
@@ -32,13 +32,13 @@ Colunas: **ID · Feature · Status · Doc de referência · Data · Commit**
 ### Fase 0 — Fundações
 | ID | Feature | Status | Ref | Data | Commit |
 |----|---------|--------|-----|------|--------|
-| F0.1 | Scaffold Vite + React + TS | ⬜ | design/12 | — | — |
-| F0.2 | Tailwind + design tokens | ⬜ | design/11 | — | — |
-| F0.3 | Estrutura de pastas core/state/ui/data/save | ⬜ | design/12 | — | — |
-| F0.4 | RNG semeado + testes | ⬜ | design/12 | — | — |
-| F0.5 | Loader + validação (zod) dos JSON | ⬜ | design/12,13 | — | — |
-| F0.6 | Vitest + ESLint + Prettier | ⬜ | design/12 | — | — |
-| F0.7 | CI (lint + testes) | ⬜ | design/12 | — | — |
+| F0.1 | Scaffold Vite + React + TS | ✅ | design/12 | 2026-07-12 | a256686 |
+| F0.2 | Tailwind + design tokens | ✅ | design/11 | 2026-07-12 | a256686 |
+| F0.3 | Estrutura de pastas core/state/ui/data | ✅ | design/12 | 2026-07-12 | a256686 |
+| F0.4 | RNG semeado + testes | ✅ | design/12 | 2026-07-12 | a256686 |
+| F0.5 | Loader + validação (zod) dos JSON | ✅ | design/12,13 | 2026-07-12 | a256686 |
+| F0.6 | Vitest + ESLint + Prettier | ✅ | design/12 | 2026-07-12 | a256686 |
+| F0.7 | CI (lint + typecheck + testes + build) | ✅ | design/12 | 2026-07-12 | a256686 |
 
 ### Fase 1 — Núcleo de Itens
 | ID | Feature | Status | Ref | Data | Commit |
