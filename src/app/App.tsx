@@ -1,22 +1,17 @@
 import { useMemo, useState } from 'react';
 import { rarities, refinement, itemDefs } from '../data';
-import { createRng, type Rng } from '../core/rng';
+import { createRng } from '../core/rng';
 import { generateItem } from '../core/items/generate';
-import { computeItemStats } from '../core/items/stats';
-import type { Item } from '../core/items/types';
 import { useGameStore } from '../state/gameStore';
+import { useInventoryStore } from '../state/inventoryStore';
 import PhaserMount from '../ui/combat/PhaserMount';
+import EquipmentPanel from '../ui/inventory/EquipmentPanel';
+import InventoryScreen from '../ui/inventory/InventoryScreen';
+import { RARITY_VAR } from '../ui/theme';
 import type { RarityId } from '../core/data/schema';
 
-const RARITY_VAR: Record<RarityId, string> = {
-  common: 'var(--color-rarity-common)',
-  uncommon: 'var(--color-rarity-uncommon)',
-  rare: 'var(--color-rarity-rare)',
-  epic: 'var(--color-rarity-epic)',
-  legendary: 'var(--color-rarity-legendary)',
-  mythic: 'var(--color-rarity-mythic)',
-  divine: 'var(--color-rarity-divine)',
-};
+const LOOT_ITEM_LEVEL = 40;
+const LOOT_ROLL_COUNT = 4;
 
 function RarityChip({ id, nome }: { id: RarityId; nome: string }) {
   const cor = RARITY_VAR[id];
@@ -27,68 +22,6 @@ function RarityChip({ id, nome }: { id: RarityId; nome: string }) {
     >
       {nome}
     </span>
-  );
-}
-
-function rollLoot(rng: Rng, itemLevel: number, count: number): Item[] {
-  return Array.from({ length: count }, () => {
-    const base = rng.pick(itemDefs.bases);
-    return generateItem(rng, {
-      base,
-      itemLevel,
-      rarities,
-      afixDefs: itemDefs.afixos,
-      refineCap: refinement.cap,
-    });
-  });
-}
-
-function ItemCard({ item }: { item: Item }) {
-  const rarityDef = rarities.find((r) => r.id === item.rarity)!;
-  const cor = RARITY_VAR[item.rarity];
-  const statsFinais = computeItemStats(item.atributosBase, item.afixos);
-
-  return (
-    <div
-      className="glass flex flex-col gap-2 p-4"
-      style={{ borderColor: `${cor}55`, boxShadow: `0 0 24px -16px ${cor}` }}
-    >
-      <div className="flex items-center justify-between gap-2">
-        <span className="font-display text-sm font-bold" style={{ color: cor }}>
-          {item.nome}
-        </span>
-        <span
-          className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold"
-          style={{ color: cor, border: `1px solid ${cor}` }}
-        >
-          {rarityDef.nome}
-        </span>
-      </div>
-      <div className="text-[11px] text-slate-500">
-        {item.slot}
-        {item.weaponType ? ` · ${item.weaponType}` : ''} · nível {item.nivelRequerido} · iLvl{' '}
-        {item.itemLevel}
-      </div>
-      <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-slate-300">
-        {Object.entries(statsFinais).map(([stat, valor]) => (
-          <span key={stat}>
-            <span className="text-slate-500">{stat}</span> {valor}
-          </span>
-        ))}
-      </div>
-      {item.afixos.length > 0 && (
-        <div className="mt-1 flex flex-wrap gap-1">
-          {item.afixos.map((a) => (
-            <span
-              key={a.affixId}
-              className="rounded bg-white/5 px-1.5 py-0.5 text-[10px] text-slate-400"
-            >
-              {a.tipo === 'prefixo' ? '↑' : '↓'} {a.affixId} +{a.valor}
-            </span>
-          ))}
-        </div>
-      )}
-    </div>
   );
 }
 
@@ -118,8 +51,7 @@ export default function App() {
   const seed = useGameStore((s) => s.seed);
   const reseed = useGameStore((s) => s.reseed);
   const [showScene, setShowScene] = useState(true);
-  const [lootSeed, setLootSeed] = useState(seed);
-  const loot = useMemo(() => rollLoot(createRng(lootSeed), 40, 6), [lootSeed]);
+  const addItem = useInventoryStore((s) => s.addItem);
 
   // Demonstra o RNG determinístico: mesma semente → mesma sequência.
   const rolls = useMemo(() => {
@@ -127,13 +59,29 @@ export default function App() {
     return Array.from({ length: 6 }, () => rng.int(1, 100));
   }, [seed]);
 
+  function handleRollLoot() {
+    const rng = createRng(Date.now());
+    for (let i = 0; i < LOOT_ROLL_COUNT; i++) {
+      const base = rng.pick(itemDefs.bases);
+      addItem(
+        generateItem(rng, {
+          base,
+          itemLevel: LOOT_ITEM_LEVEL,
+          rarities,
+          afixDefs: itemDefs.afixos,
+          refineCap: refinement.cap,
+        }),
+      );
+    }
+  }
+
   const previaTiers = refinement.tiers.slice(0, 6);
 
   return (
     <main className="mx-auto max-w-5xl px-6 py-12">
       <header className="mb-10">
         <div className="mb-3 text-xs font-bold tracking-[0.35em] text-cyan-300">
-          FASE 1 · NÚCLEO DE ITENS ONLINE
+          FASE 2 · INVENTÁRIO &amp; EQUIPAMENTO ONLINE
         </div>
         <h1 className="title-gradient font-display text-6xl font-black tracking-tight">
           AETHERFORGE
@@ -146,7 +94,7 @@ export default function App() {
         </p>
       </header>
 
-      {/* Sistemas da Fase 0 */}
+      {/* Sistemas de fundação */}
       <section className="mb-10 grid gap-4 sm:grid-cols-3">
         <SystemCard titulo="Dados validados" status="OK">
           {rarities.length} raridades · {itemDefs.bases.length} bases · {itemDefs.afixos.length}{' '}
@@ -176,24 +124,26 @@ export default function App() {
         </div>
       </section>
 
-      {/* Núcleo de Itens (Fase 1) */}
+      {/* Personagem / Equipamento (Fase 2) */}
+      <section className="mb-10">
+        <h2 className="mb-3 font-display text-lg font-bold text-white">
+          Equipamento &amp; Gear Score
+        </h2>
+        <EquipmentPanel />
+      </section>
+
+      {/* Inventário (Fase 2) */}
       <section className="mb-10">
         <div className="mb-3 flex items-center justify-between">
-          <h2 className="font-display text-lg font-bold text-white">
-            Núcleo de Itens — geração ao vivo
-          </h2>
+          <h2 className="font-display text-lg font-bold text-white">Inventário</h2>
           <button
-            onClick={() => setLootSeed((s) => s + 1)}
+            onClick={handleRollLoot}
             className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-white/10"
           >
-            Rolar loot (iLvl 40)
+            Rolar loot (iLvl {LOOT_ITEM_LEVEL})
           </button>
         </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {loot.map((item) => (
-            <ItemCard key={item.uid} item={item} />
-          ))}
-        </div>
+        <InventoryScreen />
       </section>
 
       {/* Prévia do refino */}
@@ -253,7 +203,7 @@ export default function App() {
       </section>
 
       <footer className="border-t border-white/10 pt-6 text-xs text-slate-500">
-        Aetherforge · Fases 0–1 concluídas · veja <code>docs/ROADMAP.md</code> e{' '}
+        Aetherforge · Fases 0–2 concluídas · veja <code>docs/ROADMAP.md</code> e{' '}
         <code>docs/FEATURES.md</code>.
       </footer>
     </main>

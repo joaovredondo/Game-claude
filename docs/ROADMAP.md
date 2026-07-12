@@ -50,16 +50,19 @@
 - ✅ Testes de distribuição (100k drops batem a curva ±1pp) — `core/loot/drop.test.ts`
 - ✅ _Extra:_ geração de itens integrada ao App shell (demo visual ao vivo)
 
-## Fase 2 — Inventário & Equipamento ⬜
+## Fase 2 — Inventário & Equipamento ✅
 
-**Meta:** o jogador vê, equipa e gerencia itens.
+**Meta:** o jogador vê, equipa e gerencia itens. **Concluída em 2026-07-12.**
 
-- ⬜ Store de inventário/equipamento (Zustand)
-- ⬜ Regras de equipar (slot + nivelRequerido)
-- ⬜ Cálculo de stats do personagem (soma dos equipados)
-- ⬜ Gear Score
-- ⬜ UI: grid de inventário + tooltip de item + comparação
-- ⬜ Ações: trancar, descartar, fusão em recursos, filtros de loot
+- ✅ Store de inventário/equipamento (Zustand) — `state/inventoryStore.ts`
+- ✅ Regras de equipar (slot + nivelRequerido) — `core/equipment/rules.ts`
+- ✅ Cálculo de stats do personagem (soma dos equipados) — `core/equipment/stats.ts`
+- ✅ Gear Score — `core/items/gearScore.ts`
+- ✅ UI: grid de inventário + comparação de delta — `ui/inventory/InventoryScreen.tsx`,
+  `ui/components/ItemCard.tsx` (reutilizado da Fase 1)
+- ✅ Ações: trancar, descartar, fusão em recursos (`core/items/fuse.ts`), filtros
+  (`core/items/filter.ts`)
+- ✅ _Extra:_ `EquipmentPanel` (9 slots) integrado ao App shell com demo ao vivo
 
 ## Fase 3 — Refino & Forja Ativa ⬜
 
