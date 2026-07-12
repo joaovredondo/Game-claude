@@ -9,13 +9,18 @@
 | UI | **React 18** | Ecossistema, componentização da UI pesada em painéis |
 | Estilo | **Tailwind CSS** + CSS vars | Design tokens (ver `11`), rápido e consistente |
 | Estado | **Zustand** | Store simples e performática (inventário, jogador, RNG) |
-| Animação | **Framer Motion** | Micro-animações e reveals "juicy" |
-| Efeitos de combate | **PixiJS** | Partículas/efeitos WebGL sobre a UI |
+| Animação | **Framer Motion** | Micro-animações e reveals "juicy" da UI |
+| Combate em cena | **Phaser** | Engine 2D completa para o combate em **ação em cena** (decisão do projeto) |
 | Testes | **Vitest** + Testing Library | Unit de regras (RNG, refino, drop) e componentes |
 | Persistência (MVP) | **localStorage** (via camada de save) | Zero backend para o MVP |
 | Persistência (full) | **Node (Fastify) + Postgres + Prisma** | Contas, leaderboard, anti-cheat |
 
-> Alternativa considerada: **Phaser 4** para o combate. Decisão: como a UI é dominada por painéis (inventário/forja), React+Tailwind lidera e **PixiJS** cobre efeitos. Phaser fica como opção se o combate evoluir para ação em cena.
+> **Decisão (atualizada):** o combate evoluirá para **ação em cena**. Por isso adotamos
+> **Phaser** como camada de cena desde já — a UI de painéis (inventário/forja) continua em
+> **React + Tailwind**, e o combate roda numa **cena Phaser** montada dentro do React
+> (`src/ui/combat/PhaserMount.tsx`, carregada por dynamic import). O `core/` de regras é
+> **agnóstico de engine**: nem React nem Phaser contêm lógica de jogo — ambos só projetam o
+> estado calculado pelo `core/`. Isso permite trocar/expandir a renderização sem tocar nas regras.
 
 ## Princípios de arquitetura
 
@@ -49,7 +54,7 @@ src/
     components/
     screens/
     forge/              # Forja Ativa (mini-jogo)
-    combat/             # tela de combate + PixiJS
+    combat/             # HUD React + PhaserMount (cena de ação)
   app/                  # bootstrap, roteamento
   save/                 # serialização/localStorage (+ migrations)
 tests/                  # Vitest

@@ -1,0 +1,64 @@
+@import 'tailwindcss';
+
+/* ---------- Design tokens (ver docs/design/11) ---------- */
+@theme {
+  --color-ink-900: #0b0e14;
+  --color-ink-800: #121722;
+  --color-ink-700: #1b2230;
+  --color-accent: #22d3ee;
+  --color-accent2: #a855f7;
+
+  --color-rarity-common: #9aa5b1;
+  --color-rarity-uncommon: #3fb950;
+  --color-rarity-rare: #3b82f6;
+  --color-rarity-epic: #a855f7;
+  --color-rarity-legendary: #f59e0b;
+  --color-rarity-mythic: #ef4444;
+  --color-rarity-divine: #22d3ee;
+
+  --font-display:
+    'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+  --font-sans: 'Inter', 'Segoe UI', system-ui, sans-serif;
+
+  --radius-card: 14px;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  color: #e6edf3;
+  background:
+    radial-gradient(1100px 600px at 78% -12%, #2a1f4a 0%, transparent 55%),
+    radial-gradient(700px 500px at 8% 108%, #08313a 0%, transparent 55%),
+    var(--color-ink-900);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Painel de vidro (glassmorphism) */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-card);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 40px -20px rgba(0, 0, 0, 0.8);
+}
+
+/* Título com gradiente neon */
+.title-gradient {
+  background: linear-gradient(120deg, #fff 25%, #c4b5fd 55%, #67e8f9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -24,17 +24,18 @@
 
 ---
 
-## Fase 0 — Fundações ⬜
+## Fase 0 — Fundações ✅
 
-**Meta:** base técnica sólida e reprodutível.
+**Meta:** base técnica sólida e reprodutível. **Concluída em 2026-07-12.**
 
-- ⬜ Scaffold Vite + React + TypeScript
-- ⬜ Tailwind + design tokens (cores de raridade, tipografia, vidro) — ver `design/11`
-- ⬜ Estrutura de pastas `core/ state/ ui/ data/ save/` — ver `design/12`
-- ⬜ RNG semeado (`core/rng.ts`) + testes
-- ⬜ Loader + validação (zod) dos JSON de `data/`
-- ⬜ Vitest configurado; ESLint + Prettier
-- ⬜ CI (lint + testes no push)
+- ✅ Scaffold Vite + React + TypeScript
+- ✅ Tailwind (v4) + design tokens (cores de raridade, tipografia, vidro) — ver `design/11`
+- ✅ Estrutura de pastas `core/ state/ ui/ data/` — ver `design/12`
+- ✅ RNG semeado (`core/rng.ts`) + testes
+- ✅ Loader + validação (zod) dos JSON de `data/`
+- ✅ Vitest configurado; ESLint + Prettier
+- ✅ CI (lint + typecheck + testes + build no push)
+- ✅ _Extra:_ seam de cena Phaser (`ui/combat/PhaserMount.tsx`) para a ação em cena futura
 
 ## Fase 1 — Núcleo de Itens ⬜
 
