@@ -4,7 +4,7 @@
 
 **Status:** ⬜ Pendente · 🟨 Em andamento · ✅ Concluído · 🧊 Adiado
 
-**Última atualização:** 2026-07-12 — _Fase 0 (Fundações) concluída (commit `a256686`)._
+**Última atualização:** 2026-07-12 — _Fase 1 (Núcleo de Itens) concluída (commit `b78dd62`)._
 
 ---
 
@@ -13,7 +13,7 @@
 | Fase | Features | Concluídas | Progresso |
 |------|----------|-----------|-----------|
 | 0 — Fundações | 7 | 7 | ✅ 100% |
-| 1 — Núcleo de Itens | 7 | 0 | 0% |
+| 1 — Núcleo de Itens | 7 | 7 | ✅ 100% |
 | 2 — Inventário & Equipamento | 6 | 0 | 0% |
 | 3 — Refino & Forja Ativa | 8 | 0 | 0% |
 | 4 — Combate & Fraturas | 7 | 0 | 0% |
@@ -21,7 +21,7 @@
 | 6 — Polish Visual | 5 | 0 | 0% |
 | 7 — Persistência & Meta | 5 | 0 | 0% |
 | 8 — Conteúdo & Live-ops | 5 | 0 | 0% |
-| **TOTAL** | **56** | **7** | **12.5%** |
+| **TOTAL** | **56** | **14** | **25%** |
 
 ---
 
@@ -43,13 +43,13 @@ Colunas: **ID · Feature · Status · Doc de referência · Data · Commit**
 ### Fase 1 — Núcleo de Itens
 | ID | Feature | Status | Ref | Data | Commit |
 |----|---------|--------|-----|------|--------|
-| F1.1 | Tipos TS do modelo de dados | ⬜ | design/13 | — | — |
-| F1.2 | Sorteio de raridade por peso | ⬜ | design/03,06 | — | — |
-| F1.3 | Geração de item (base→itemLevel→rolagem) | ⬜ | design/02,04 | — | — |
-| F1.4 | Sistema de afixos | ⬜ | design/04 | — | — |
-| F1.5 | Pipeline de cálculo de stats | ⬜ | design/04 | — | — |
-| F1.6 | Nome derivado (base + afixos + refino) | ⬜ | design/02 | — | — |
-| F1.7 | Testes de distribuição de drop | ⬜ | design/12 | — | — |
+| F1.1 | Tipos TS do modelo de dados | ✅ | design/13 | 2026-07-12 | b78dd62 |
+| F1.2 | Sorteio de raridade por peso | ✅ | design/03,06 | 2026-07-12 | b78dd62 |
+| F1.3 | Geração de item (base→itemLevel→rolagem) | ✅ | design/02,04 | 2026-07-12 | b78dd62 |
+| F1.4 | Sistema de afixos | ✅ | design/04 | 2026-07-12 | b78dd62 |
+| F1.5 | Pipeline de cálculo de stats | ✅ | design/04 | 2026-07-12 | b78dd62 |
+| F1.6 | Nome derivado (base + afixos + refino) | ✅ | design/02 | 2026-07-12 | b78dd62 |
+| F1.7 | Testes de distribuição de drop | ✅ | design/12 | 2026-07-12 | b78dd62 |
 
 ### Fase 2 — Inventário & Equipamento
 | ID | Feature | Status | Ref | Data | Commit |
