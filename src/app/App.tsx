@@ -1,6 +1,9 @@
 import { useMemo, useState } from 'react';
 import { rarities, refinement, itemDefs } from '../data';
-import { createRng } from '../core/rng';
+import { createRng, type Rng } from '../core/rng';
+import { generateItem } from '../core/items/generate';
+import { computeItemStats } from '../core/items/stats';
+import type { Item } from '../core/items/types';
 import { useGameStore } from '../state/gameStore';
 import PhaserMount from '../ui/combat/PhaserMount';
 import type { RarityId } from '../core/data/schema';
@@ -24,6 +27,68 @@ function RarityChip({ id, nome }: { id: RarityId; nome: string }) {
     >
       {nome}
     </span>
+  );
+}
+
+function rollLoot(rng: Rng, itemLevel: number, count: number): Item[] {
+  return Array.from({ length: count }, () => {
+    const base = rng.pick(itemDefs.bases);
+    return generateItem(rng, {
+      base,
+      itemLevel,
+      rarities,
+      afixDefs: itemDefs.afixos,
+      refineCap: refinement.cap,
+    });
+  });
+}
+
+function ItemCard({ item }: { item: Item }) {
+  const rarityDef = rarities.find((r) => r.id === item.rarity)!;
+  const cor = RARITY_VAR[item.rarity];
+  const statsFinais = computeItemStats(item.atributosBase, item.afixos);
+
+  return (
+    <div
+      className="glass flex flex-col gap-2 p-4"
+      style={{ borderColor: `${cor}55`, boxShadow: `0 0 24px -16px ${cor}` }}
+    >
+      <div className="flex items-center justify-between gap-2">
+        <span className="font-display text-sm font-bold" style={{ color: cor }}>
+          {item.nome}
+        </span>
+        <span
+          className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold"
+          style={{ color: cor, border: `1px solid ${cor}` }}
+        >
+          {rarityDef.nome}
+        </span>
+      </div>
+      <div className="text-[11px] text-slate-500">
+        {item.slot}
+        {item.weaponType ? ` · ${item.weaponType}` : ''} · nível {item.nivelRequerido} · iLvl{' '}
+        {item.itemLevel}
+      </div>
+      <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-slate-300">
+        {Object.entries(statsFinais).map(([stat, valor]) => (
+          <span key={stat}>
+            <span className="text-slate-500">{stat}</span> {valor}
+          </span>
+        ))}
+      </div>
+      {item.afixos.length > 0 && (
+        <div className="mt-1 flex flex-wrap gap-1">
+          {item.afixos.map((a) => (
+            <span
+              key={a.affixId}
+              className="rounded bg-white/5 px-1.5 py-0.5 text-[10px] text-slate-400"
+            >
+              {a.tipo === 'prefixo' ? '↑' : '↓'} {a.affixId} +{a.valor}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -53,6 +118,8 @@ export default function App() {
   const seed = useGameStore((s) => s.seed);
   const reseed = useGameStore((s) => s.reseed);
   const [showScene, setShowScene] = useState(true);
+  const [lootSeed, setLootSeed] = useState(seed);
+  const loot = useMemo(() => rollLoot(createRng(lootSeed), 40, 6), [lootSeed]);
 
   // Demonstra o RNG determinístico: mesma semente → mesma sequência.
   const rolls = useMemo(() => {
@@ -66,7 +133,7 @@ export default function App() {
     <main className="mx-auto max-w-5xl px-6 py-12">
       <header className="mb-10">
         <div className="mb-3 text-xs font-bold tracking-[0.35em] text-cyan-300">
-          FASE 0 · FUNDAÇÕES ONLINE
+          FASE 1 · NÚCLEO DE ITENS ONLINE
         </div>
         <h1 className="title-gradient font-display text-6xl font-black tracking-tight">
           AETHERFORGE
@@ -105,6 +172,26 @@ export default function App() {
         <div className="flex flex-wrap gap-2">
           {rarities.map((r) => (
             <RarityChip key={r.id} id={r.id} nome={r.nome} />
+          ))}
+        </div>
+      </section>
+
+      {/* Núcleo de Itens (Fase 1) */}
+      <section className="mb-10">
+        <div className="mb-3 flex items-center justify-between">
+          <h2 className="font-display text-lg font-bold text-white">
+            Núcleo de Itens — geração ao vivo
+          </h2>
+          <button
+            onClick={() => setLootSeed((s) => s + 1)}
+            className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-white/10"
+          >
+            Rolar loot (iLvl 40)
+          </button>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {loot.map((item) => (
+            <ItemCard key={item.uid} item={item} />
           ))}
         </div>
       </section>
@@ -166,7 +253,7 @@ export default function App() {
       </section>
 
       <footer className="border-t border-white/10 pt-6 text-xs text-slate-500">
-        Aetherforge · Fase 0 concluída · veja <code>docs/ROADMAP.md</code> e{' '}
+        Aetherforge · Fases 0–1 concluídas · veja <code>docs/ROADMAP.md</code> e{' '}
         <code>docs/FEATURES.md</code>.
       </footer>
     </main>

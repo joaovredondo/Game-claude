@@ -37,17 +37,18 @@
 - ✅ CI (lint + typecheck + testes + build no push)
 - ✅ _Extra:_ seam de cena Phaser (`ui/combat/PhaserMount.tsx`) para a ação em cena futura
 
-## Fase 1 — Núcleo de Itens ⬜
+## Fase 1 — Núcleo de Itens ✅
 
-**Meta:** gerar um item completo a partir de dados.
+**Meta:** gerar um item completo a partir de dados. **Concluída em 2026-07-12.**
 
-- ⬜ Tipos TS do modelo de dados (`design/13`)
-- ⬜ Sorteio de raridade por peso (`core/loot/drop` parcial)
-- ⬜ Geração de item: base → itemLevel → rolagem de atributos base
-- ⬜ Sistema de afixos (prefixos/sufixos por raridade)
-- ⬜ Pipeline de cálculo de stats (base × raridade + afixos)
-- ⬜ Nome derivado (base + afixos)
-- ⬜ Testes de distribuição (100k drops batem a curva ±tolerância)
+- ✅ Tipos TS do modelo de dados (`design/13`) — `core/items/types.ts`
+- ✅ Sorteio de raridade por peso — `core/loot/drop.ts` (+ hooks de modificador p/ Fase 4/9)
+- ✅ Geração de item: base → itemLevel → rolagem de atributos base — `core/items/generate.ts`
+- ✅ Sistema de afixos (prefixos/sufixos por raridade) — `core/items/affixes.ts`
+- ✅ Pipeline de cálculo de stats (base × raridade + afixos) — `core/items/stats.ts`
+- ✅ Nome derivado (base + afixos + "+N") — `formatItemName`
+- ✅ Testes de distribuição (100k drops batem a curva ±1pp) — `core/loot/drop.test.ts`
+- ✅ _Extra:_ geração de itens integrada ao App shell (demo visual ao vivo)
 
 ## Fase 2 — Inventário & Equipamento ⬜
 
