@@ -7,6 +7,7 @@ import { useInventoryStore } from '../state/inventoryStore';
 import PhaserMount from '../ui/combat/PhaserMount';
 import EquipmentPanel from '../ui/inventory/EquipmentPanel';
 import InventoryScreen from '../ui/inventory/InventoryScreen';
+import ForgeScreen from '../ui/forge/ForgeScreen';
 import { RARITY_VAR } from '../ui/theme';
 import type { RarityId } from '../core/data/schema';
 
@@ -75,13 +76,11 @@ export default function App() {
     }
   }
 
-  const previaTiers = refinement.tiers.slice(0, 6);
-
   return (
     <main className="mx-auto max-w-5xl px-6 py-12">
       <header className="mb-10">
         <div className="mb-3 text-xs font-bold tracking-[0.35em] text-cyan-300">
-          FASE 2 · INVENTÁRIO &amp; EQUIPAMENTO ONLINE
+          FASE 3 · REFINO &amp; FORJA ATIVA ONLINE
         </div>
         <h1 className="title-gradient font-display text-6xl font-black tracking-tight">
           AETHERFORGE
@@ -146,39 +145,12 @@ export default function App() {
         <InventoryScreen />
       </section>
 
-      {/* Prévia do refino */}
+      {/* Forja Ativa (Fase 3) */}
       <section className="mb-10">
         <h2 className="mb-3 font-display text-lg font-bold text-white">
-          Refino — prévia dos dados
+          Forja — Refino Ativo
         </h2>
-        <div className="glass overflow-hidden">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="bg-white/5 text-left text-xs text-slate-400">
-                <th className="px-4 py-2">Nível-alvo</th>
-                <th className="px-4 py-2">Chance base</th>
-                <th className="px-4 py-2">Em caso de falha</th>
-                <th className="px-4 py-2">Custo (ouro)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {previaTiers.map((t) => (
-                <tr key={t.nivelAlvo} className="border-t border-white/5">
-                  <td className="px-4 py-2 font-bold text-white">+{t.nivelAlvo}</td>
-                  <td className="px-4 py-2 text-cyan-300">{Math.round(t.chanceBase * 100)}%</td>
-                  <td className="px-4 py-2 text-slate-400">
-                    {t.falha === 'nada'
-                      ? 'seguro'
-                      : t.falha === 'menos1'
-                        ? '−1 nível'
-                        : '−1 ou destrói'}
-                  </td>
-                  <td className="px-4 py-2 text-slate-300">{t.custoOuro.toLocaleString('pt-BR')}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <ForgeScreen />
       </section>
 
       {/* Cena de demonstração (Phaser) */}
@@ -203,7 +175,7 @@ export default function App() {
       </section>
 
       <footer className="border-t border-white/10 pt-6 text-xs text-slate-500">
-        Aetherforge · Fases 0–2 concluídas · veja <code>docs/ROADMAP.md</code> e{' '}
+        Aetherforge · Fases 0–3 concluídas · veja <code>docs/ROADMAP.md</code> e{' '}
         <code>docs/FEATURES.md</code>.
       </footer>
     </main>

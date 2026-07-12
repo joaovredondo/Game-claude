@@ -64,18 +64,20 @@
   (`core/items/filter.ts`)
 - ✅ _Extra:_ `EquipmentPanel` (9 slots) integrado ao App shell com demo ao vivo
 
-## Fase 3 — Refino & Forja Ativa ⬜
+## Fase 3 — Refino & Forja Ativa ✅
 
-**Meta:** o diferencial autoral funcionando.
+**Meta:** o diferencial autoral funcionando. **Concluída em 2026-07-12.**
 
-- ⬜ Config de refino carregada de `data/refinement.json`
-- ⬜ Cálculo de chance final (base + pedras c/ retorno decrescente + forja)
-- ⬜ Resolução de refino (sucesso / -1 / destruição) com Selo
-- ⬜ Bônus de stats por nível de refino aplicado ao item
-- ⬜ **Forja Ativa:** mini-jogo de precisão (barra/zona quente)
-- ⬜ Modo auto-forja (acessibilidade)
-- ⬜ UI da Forja: seleção de pedras/selo, chance, resultado dramático
-- ⬜ Log/histórico de tentativas
+- ✅ Config de refino carregada de `data/refinement.json` (já validada pela Fase 0)
+- ✅ Cálculo de chance final (base + pedras c/ retorno decrescente + forja) —
+  `core/refine/refine.ts` (`computeFinalChance`, `computeStoneBonus`, `computeForjaAtivaBonus`)
+- ✅ Resolução de refino (sucesso / -1 / destruição) com Selo — `resolveRefine`
+- ✅ Bônus de stats por nível de refino aplicado ao item — `items/stats.ts`
+  (`resolveItemStats`), propagado a `equipment/stats.ts` e `items/gearScore.ts`
+- ✅ **Forja Ativa:** mini-jogo de precisão (barra/zona quente) — `ui/forge/ForgeMeter.tsx`
+- ✅ Modo auto-forja (acessibilidade) — toggle na `ForgeScreen`, usa bônus médio fixo
+- ✅ UI da Forja: seleção de pedras/selo, chance, resultado — `ui/forge/ForgeScreen.tsx`
+- ✅ Log/histórico de tentativas — `refineLog` na store, últimas 50 tentativas
 
 ## Fase 4 — Combate & Fraturas ⬜
 

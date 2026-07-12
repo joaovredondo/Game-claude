@@ -3,8 +3,8 @@
  * inventário e no equipamento (Fase 2). Ver docs/design/11 (design system).
  */
 import type { Item } from '../../core/items/types';
-import { computeItemStats } from '../../core/items/stats';
-import { rarities } from '../../data';
+import { resolveItemStats } from '../../core/items/stats';
+import { rarities, refinement } from '../../data';
 import { RARITY_VAR } from '../theme';
 
 export interface ItemCardActions {
@@ -55,10 +55,8 @@ export default function ItemCard({
 }: ItemCardProps) {
   const rarityDef = rarities.find((r) => r.id === item.rarity)!;
   const cor = RARITY_VAR[item.rarity];
-  const stats = computeItemStats(item.atributosBase, item.afixos);
-  const statsCompare = compareTo
-    ? computeItemStats(compareTo.atributosBase, compareTo.afixos)
-    : null;
+  const stats = resolveItemStats(item, refinement);
+  const statsCompare = compareTo ? resolveItemStats(compareTo, refinement) : null;
 
   const hasFooter = Boolean(actions) || Boolean(onToggleSelect);
 

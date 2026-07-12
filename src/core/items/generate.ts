@@ -25,6 +25,16 @@ export interface GenerateItemInput {
 }
 
 /**
+ * Substitui o sufixo "+N" de um nome de item já formatado (ou o adiciona,
+ * se ainda não houver). Usado tanto na geração quanto após um refino (Fase
+ * 3), sem precisar re-derivar o nome a partir da base/afixos.
+ */
+export function withRefineSuffix(nome: string, refinoNivel: number): string {
+  const semSufixo = nome.replace(/\s*\+\d+$/, '');
+  return refinoNivel > 0 ? `${semSufixo} +${refinoNivel}` : semSufixo;
+}
+
+/**
  * Monta o nome de exibição: `[Prefixo] Nome [Sufixo] [+N]`, usando o
  * primeiro prefixo/sufixo rolado (convenção comum em ARPGs — o tooltip
  * lista todos os afixos separadamente).
@@ -43,9 +53,7 @@ export function formatItemName(
   partes.push(base.nome);
   if (sufixo) partes.push(afixDefsById.get(sufixo.affixId)?.nome ?? sufixo.affixId);
 
-  let nome = partes.join(' ');
-  if (refinoNivel > 0) nome += ` +${refinoNivel}`;
-  return nome;
+  return withRefineSuffix(partes.join(' '), refinoNivel);
 }
 
 /** Gera um item completo a partir de uma base, um itemLevel e as tabelas de raridade/afixos. */

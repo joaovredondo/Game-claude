@@ -19,7 +19,13 @@ function makeItem(seed: number, itemLevel = 10, base = espada) {
 }
 
 beforeEach(() => {
-  useInventoryStore.setState({ inventory: [], equipment: {}, characterLevel: 1, recursos: {} });
+  useInventoryStore.setState({
+    inventory: [],
+    equipment: {},
+    characterLevel: 1,
+    recursos: {},
+    refineLog: [],
+  });
 });
 
 describe('inventoryStore', () => {
@@ -129,5 +135,119 @@ describe('inventoryStore', () => {
 
     useInventoryStore.getState().toggleLock(item.uid);
     expect(useInventoryStore.getState().inventory[0].bloqueado).toBe(false);
+  });
+});
+
+describe('inventoryStore.refineItem', () => {
+  it('recusa item inexistente', () => {
+    const result = useInventoryStore.getState().refineItem('uid-inexistente', {
+      stoneIds: [],
+      useSeal: false,
+      forjaResultado: 'erro',
+    });
+    expect(result).toEqual({ ok: false, reason: 'item_nao_encontrado' });
+  });
+
+  it('recusa item trancado', () => {
+    const item = makeItem(1);
+    useInventoryStore.getState().addItem(item);
+    useInventoryStore.getState().toggleLock(item.uid);
+
+    const result = useInventoryStore
+      .getState()
+      .refineItem(item.uid, { stoneIds: [], useSeal: false, forjaResultado: 'erro' });
+    expect(result).toEqual({ ok: false, reason: 'item_bloqueado' });
+  });
+
+  it('recusa item já no cap de refino', () => {
+    const item = { ...makeItem(1), refino: { nivel: refinement.cap, cap: refinement.cap } };
+    useInventoryStore.getState().addItem(item);
+
+    const result = useInventoryStore
+      .getState()
+      .refineItem(item.uid, { stoneIds: [], useSeal: false, forjaResultado: 'erro' });
+    expect(result).toEqual({ ok: false, reason: 'refino_maximo' });
+  });
+
+  it('recusa quando não há ouro suficiente', () => {
+    const item = makeItem(1);
+    useInventoryStore.getState().addItem(item);
+    useInventoryStore.setState({ recursos: { ouro: 0 } });
+
+    const result = useInventoryStore
+      .getState()
+      .refineItem(item.uid, { stoneIds: [], useSeal: false, forjaResultado: 'erro' });
+    expect(result).toEqual({ ok: false, reason: 'ouro_insuficiente' });
+  });
+
+  it('recusa quando não há pedras suficientes', () => {
+    const item = makeItem(1);
+    useInventoryStore.getState().addItem(item);
+    useInventoryStore.setState({ recursos: { ouro: 999_999 } });
+
+    const result = useInventoryStore.getState().refineItem(item.uid, {
+      stoneIds: ['pedra_estelar'],
+      useSeal: false,
+      forjaResultado: 'erro',
+    });
+    expect(result).toEqual({ ok: false, reason: 'pedra_insuficiente' });
+  });
+
+  it('recusa quando pede selo sem ter selo em estoque', () => {
+    const item = { ...makeItem(1), refino: { nivel: 7, cap: refinement.cap } }; // próximo é +8 (perigoso)
+    useInventoryStore.getState().addItem(item);
+    useInventoryStore.setState({ recursos: { ouro: 999_999, selo_protecao: 0 } });
+
+    const result = useInventoryStore
+      .getState()
+      .refineItem(item.uid, { stoneIds: [], useSeal: true, forjaResultado: 'erro' });
+    expect(result).toEqual({ ok: false, reason: 'selo_insuficiente' });
+  });
+
+  it('sucesso garantido (chance 100%) sobe o nível, deduz recursos e registra o log', () => {
+    const item = makeItem(1);
+    useInventoryStore.getState().addItem(item);
+    useInventoryStore.setState({
+      recursos: { ouro: 999_999, pedra_estelar: 5 },
+    });
+
+    const stoneIds = Array(5).fill('pedra_estelar');
+    const result = useInventoryStore
+      .getState()
+      .refineItem(item.uid, { stoneIds, useSeal: false, forjaResultado: 'perfeito' });
+
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.chanceFinal).toBe(1); // clamp em 100% garante sucesso determinístico
+    expect(result.sucesso).toBe(true);
+
+    const state = useInventoryStore.getState();
+    const atualizado = state.inventory.find((i) => i.uid === item.uid)!;
+    expect(atualizado.refino.nivel).toBe(1);
+    expect(atualizado.nome.endsWith('+1')).toBe(true);
+    expect(state.recursos.ouro).toBe(999_999 - 100); // custo do tier +1
+    expect(state.recursos.pedra_estelar).toBe(0);
+    expect(state.refineLog).toHaveLength(1);
+    expect(state.refineLog[0].sucesso).toBe(true);
+  });
+
+  it('mantém o ponteiro de equipamento intacto ao refinar com sucesso um item equipado', () => {
+    // A destruição em si (e o desequipar automático correspondente) é
+    // probabilística e já coberta deterministicamente em core/refine/refine.test.ts
+    // via um Rng fixo; aqui garantimos que o caminho de sucesso não quebra
+    // o ponteiro slot→uid do item que estava equipado.
+    const item = makeItem(1, 1);
+    useInventoryStore.getState().addItem(item);
+    useInventoryStore.getState().equipItem(item.uid);
+    useInventoryStore.setState({ recursos: { ouro: 999_999, pedra_estelar: 5 } });
+
+    useInventoryStore.getState().refineItem(item.uid, {
+      stoneIds: Array(5).fill('pedra_estelar'),
+      useSeal: false,
+      forjaResultado: 'perfeito',
+    });
+
+    const state = useInventoryStore.getState();
+    expect(state.equipment.weapon).toBe(item.uid);
   });
 });

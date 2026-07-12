@@ -5,8 +5,9 @@
 import type { Slot } from '../../core/data/schema';
 import type { Item } from '../../core/items/types';
 import { computeCharacterStats } from '../../core/equipment/stats';
-import { computeTotalGearScore } from '../../core/items/gearScore';
+import { computeTotalGearScore, DEFAULT_GEAR_SCORE_WEIGHTS } from '../../core/items/gearScore';
 import { useInventoryStore } from '../../state/inventoryStore';
+import { refinement } from '../../data';
 import { RARITY_VAR } from '../theme';
 
 const SLOT_LABELS: Record<Slot, string> = {
@@ -46,8 +47,8 @@ export default function EquipmentPanel() {
     return uid ? byUid.get(uid) : undefined;
   }).filter((i): i is Item => Boolean(i));
 
-  const stats = computeCharacterStats(equippedItems);
-  const gearScore = computeTotalGearScore(equippedItems);
+  const stats = computeCharacterStats(equippedItems, refinement);
+  const gearScore = computeTotalGearScore(equippedItems, DEFAULT_GEAR_SCORE_WEIGHTS, refinement);
 
   return (
     <div className="glass p-5">
