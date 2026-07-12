@@ -4,7 +4,7 @@
 
 **Status:** ⬜ Pendente · 🟨 Em andamento · ✅ Concluído · 🧊 Adiado
 
-**Última atualização:** 2026-07-12 — _Fase 1 (Núcleo de Itens) concluída (commit `b78dd62`)._
+**Última atualização:** 2026-07-12 — _Fase 2 (Inventário & Equipamento) concluída (commit `861d023`)._
 
 ---
 
@@ -14,14 +14,14 @@
 |------|----------|-----------|-----------|
 | 0 — Fundações | 7 | 7 | ✅ 100% |
 | 1 — Núcleo de Itens | 7 | 7 | ✅ 100% |
-| 2 — Inventário & Equipamento | 6 | 0 | 0% |
+| 2 — Inventário & Equipamento | 6 | 6 | ✅ 100% |
 | 3 — Refino & Forja Ativa | 8 | 0 | 0% |
 | 4 — Combate & Fraturas | 7 | 0 | 0% |
 | 5 — Progressão & Economia | 6 | 0 | 0% |
 | 6 — Polish Visual | 5 | 0 | 0% |
 | 7 — Persistência & Meta | 5 | 0 | 0% |
 | 8 — Conteúdo & Live-ops | 5 | 0 | 0% |
-| **TOTAL** | **56** | **14** | **25%** |
+| **TOTAL** | **56** | **20** | **35.7%** |
 
 ---
 
@@ -54,12 +54,12 @@ Colunas: **ID · Feature · Status · Doc de referência · Data · Commit**
 ### Fase 2 — Inventário & Equipamento
 | ID | Feature | Status | Ref | Data | Commit |
 |----|---------|--------|-----|------|--------|
-| F2.1 | Store de inventário/equipamento | ⬜ | design/12 | — | — |
-| F2.2 | Regras de equipar (slot + nível) | ⬜ | design/02 | — | — |
-| F2.3 | Stats do personagem (soma equipados) | ⬜ | design/04 | — | — |
-| F2.4 | Gear Score | ⬜ | design/04,13 | — | — |
-| F2.5 | UI: grid + tooltip + comparação | ⬜ | design/11 | — | — |
-| F2.6 | Ações: trancar/descartar/fundir/filtros | ⬜ | design/02,06 | — | — |
+| F2.1 | Store de inventário/equipamento | ✅ | design/12 | 2026-07-12 | 861d023 |
+| F2.2 | Regras de equipar (slot + nível) | ✅ | design/02 | 2026-07-12 | 861d023 |
+| F2.3 | Stats do personagem (soma equipados) | ✅ | design/04 | 2026-07-12 | 861d023 |
+| F2.4 | Gear Score | ✅ | design/04,13 | 2026-07-12 | 861d023 |
+| F2.5 | UI: grid + tooltip + comparação | ✅ | design/11 | 2026-07-12 | 861d023 |
+| F2.6 | Ações: trancar/descartar/fundir/filtros | ✅ | design/02,06 | 2026-07-12 | 861d023 |
 
 ### Fase 3 — Refino & Forja Ativa
 | ID | Feature | Status | Ref | Data | Commit |
