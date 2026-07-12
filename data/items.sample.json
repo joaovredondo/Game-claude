@@ -1,0 +1,64 @@
+{
+  "$schema": "ItemBase[] + AffixDef[] de exemplo — ver docs/design/13-modelo-de-dados.md",
+  "bases": [
+    {
+      "id": "asa_couro", "nome": "Asas de Couro", "slot": "wings", "icon": "wings_leather",
+      "nivelRequeridoBase": 5, "tierTematico": 1,
+      "faixasBase": { "defesa": [8, 14], "velocidade": [2, 4] },
+      "poolAfixos": { "prefixos": ["impenetravel", "afiado"], "sufixos": ["do_tita", "da_aguia"] }
+    },
+    {
+      "id": "asa_espirito", "nome": "Asas Espirituais", "slot": "wings", "icon": "wings_spirit",
+      "nivelRequeridoBase": 25, "tierTematico": 2,
+      "faixasBase": { "defesa": [22, 34], "velocidade": [4, 6] },
+      "passivoRaridade": "Leveza: +4% de evasão",
+      "poolAfixos": { "prefixos": ["impenetravel", "afiado", "flamejante"], "sufixos": ["do_tita", "da_aguia", "do_vampiro"] }
+    },
+    {
+      "id": "asa_arcanjo", "nome": "Asas de Arcanjo", "slot": "wings", "icon": "wings_archangel",
+      "nivelRequeridoBase": 50, "tierTematico": 3,
+      "faixasBase": { "defesa": [50, 74], "velocidade": [6, 9] },
+      "passivoRaridade": "Graça: +6% de todos os atributos",
+      "poolAfixos": { "prefixos": ["impenetravel", "afiado", "flamejante"], "sufixos": ["do_tita", "da_aguia", "do_vampiro"] }
+    },
+    {
+      "id": "espada_ferro", "nome": "Espada de Ferro", "slot": "weapon", "weaponType": "sword", "icon": "sword_iron",
+      "nivelRequeridoBase": 1, "tierTematico": 1,
+      "faixasBase": { "dano": [10, 16] },
+      "poolAfixos": { "prefixos": ["afiado", "flamejante"], "sufixos": ["do_tita", "da_aguia"] }
+    },
+    {
+      "id": "machado_guerra", "nome": "Machado de Guerra", "slot": "weapon", "weaponType": "axe", "icon": "axe_war",
+      "nivelRequeridoBase": 8, "tierTematico": 1,
+      "faixasBase": { "dano": [18, 30] },
+      "poolAfixos": { "prefixos": ["afiado", "flamejante"], "sufixos": ["do_tita"] }
+    },
+    {
+      "id": "arco_cacador", "nome": "Arco do Caçador", "slot": "weapon", "weaponType": "bow", "icon": "bow_hunter",
+      "nivelRequeridoBase": 8, "tierTematico": 1,
+      "faixasBase": { "dano": [12, 20] },
+      "poolAfixos": { "prefixos": ["afiado"], "sufixos": ["da_aguia", "do_vampiro"] }
+    },
+    {
+      "id": "clave_sagrada", "nome": "Clave Sagrada", "slot": "weapon", "weaponType": "mace", "icon": "mace_holy",
+      "nivelRequeridoBase": 12, "tierTematico": 2,
+      "faixasBase": { "dano": [14, 24] },
+      "passivoRaridade": "Julgamento: +X de penetração",
+      "poolAfixos": { "prefixos": ["flamejante"], "sufixos": ["do_tita", "do_vampiro"] }
+    },
+    {
+      "id": "peitoral_aco", "nome": "Peitoral de Aço", "slot": "chest", "icon": "chest_steel",
+      "nivelRequeridoBase": 5, "tierTematico": 1,
+      "faixasBase": { "defesa": [15, 25] },
+      "poolAfixos": { "prefixos": ["impenetravel"], "sufixos": ["do_tita"] }
+    }
+  ],
+  "afixos": [
+    { "id": "flamejante",  "nome": "Flamejante",   "tipo": "prefixo", "stat": "danoFogo",   "faixa": [3, 9],   "slotsPermitidos": ["weapon", "wings"] },
+    { "id": "afiado",      "nome": "Afiado",       "tipo": "prefixo", "stat": "critChance", "faixa": [1, 4],   "slotsPermitidos": ["weapon"] },
+    { "id": "impenetravel","nome": "Impenetrável", "tipo": "prefixo", "stat": "defesa",     "faixa": [5, 15],  "slotsPermitidos": ["helmet","chest","gloves","boots","wings","offhand"] },
+    { "id": "do_tita",     "nome": "do Titã",      "tipo": "sufixo",  "stat": "hpPct",      "faixa": [2, 8],   "slotsPermitidos": ["helmet","chest","gloves","boots","wings","weapon"] },
+    { "id": "da_aguia",    "nome": "da Águia",     "tipo": "sufixo",  "stat": "DES",        "faixa": [2, 10],  "slotsPermitidos": ["weapon","wings","ring","amulet"] },
+    { "id": "do_vampiro",  "nome": "do Vampiro",   "tipo": "sufixo",  "stat": "rouboVida",  "faixa": [1, 5],   "slotsPermitidos": ["weapon","amulet"] }
+  ]
+}

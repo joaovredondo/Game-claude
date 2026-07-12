@@ -1,0 +1,5 @@
+node_modules/
+dist/roadmap.preview.html
+dist/_*.png
+*.log
+.DS_Store

@@ -1,0 +1,46 @@
+{
+  "$schema": "RefineConfig — ver docs/design/13-modelo-de-dados.md e docs/design/05-sistema-de-refino.md",
+  "cap": 11,
+  "tiers": [
+    { "nivelAlvo": 1,  "chanceBase": 0.95, "falha": "nada",              "custoOuro": 100 },
+    { "nivelAlvo": 2,  "chanceBase": 0.90, "falha": "nada",              "custoOuro": 200 },
+    { "nivelAlvo": 3,  "chanceBase": 0.82, "falha": "nada",              "custoOuro": 400 },
+    { "nivelAlvo": 4,  "chanceBase": 0.74, "falha": "nada",              "custoOuro": 700 },
+    { "nivelAlvo": 5,  "chanceBase": 0.62, "falha": "menos1",            "custoOuro": 1200 },
+    { "nivelAlvo": 6,  "chanceBase": 0.50, "falha": "menos1",            "custoOuro": 2000 },
+    { "nivelAlvo": 7,  "chanceBase": 0.40, "falha": "menos1",            "custoOuro": 3200 },
+    { "nivelAlvo": 8,  "chanceBase": 0.30, "falha": "menos1_ou_destroi", "custoOuro": 5000 },
+    { "nivelAlvo": 9,  "chanceBase": 0.22, "falha": "menos1_ou_destroi", "custoOuro": 8000 },
+    { "nivelAlvo": 10, "chanceBase": 0.15, "falha": "menos1_ou_destroi", "custoOuro": 12000 },
+    { "nivelAlvo": 11, "chanceBase": 0.09, "falha": "menos1_ou_destroi", "custoOuro": 18000 }
+  ],
+  "stones": [
+    { "id": "pedra_bruta",    "nome": "Pedra Bruta",    "bonusChance": 0.00 },
+    { "id": "pedra_polida",   "nome": "Pedra Polida",   "bonusChance": 0.05 },
+    { "id": "pedra_arcana",   "nome": "Pedra Arcana",   "bonusChance": 0.12 },
+    { "id": "pedra_estelar",  "nome": "Pedra Estelar",  "bonusChance": 0.25 }
+  ],
+  "fatoresPedra": [1.0, 1.0, 0.85, 0.7, 0.55],
+  "maxPedrasPorTentativa": 5,
+  "seloProtecao": {
+    "id": "selo_protecao",
+    "nome": "Selo de Proteção",
+    "efeito": "Em falha de nível perigoso (+8..+11), impede a destruição; a pior falha vira -1 nível. Consumido no uso."
+  },
+  "forjaAtiva": {
+    "bonusPerfeito": 0.15,
+    "bonusBom": 0.06,
+    "bonusErro": 0.00,
+    "larguraBasePerfeito": 0.22,
+    "reducaoLarguraPorNivel": 0.012,
+    "aumentoLarguraPorQualidadePedra": 0.03
+  },
+  "bonusStatsPorNivel": {
+    "1": 0.03, "2": 0.06, "3": 0.09, "4": 0.12,
+    "5": 0.17, "6": 0.22, "7": 0.27,
+    "8": 0.34, "9": 0.41,
+    "10": 0.51,
+    "11": 0.65
+  },
+  "passivoRefinoTopo": "Ao atingir +11, o item ganha um passivo temático (ex.: 'Bênção Celestial: +8% de todos os atributos')."
+}

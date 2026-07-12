@@ -1,0 +1,12 @@
+{
+  "$schema": "RarityDef[] — ver docs/design/13-modelo-de-dados.md",
+  "rarities": [
+    { "id": "common",    "nome": "Comum",     "cor": "#9AA5B1", "numAfixos": 0, "multStats": 1.00, "pisoRolagem": 0.30, "pesoDropBase": 60.0 },
+    { "id": "uncommon",  "nome": "Incomum",   "cor": "#3FB950", "numAfixos": 1, "multStats": 1.15, "pisoRolagem": 0.40, "pesoDropBase": 24.0 },
+    { "id": "rare",      "nome": "Raro",      "cor": "#3B82F6", "numAfixos": 2, "multStats": 1.35, "pisoRolagem": 0.50, "pesoDropBase": 10.0 },
+    { "id": "epic",      "nome": "Épico",     "cor": "#A855F7", "numAfixos": 3, "multStats": 1.60, "pisoRolagem": 0.60, "pesoDropBase": 4.0 },
+    { "id": "legendary", "nome": "Lendário",  "cor": "#F59E0B", "numAfixos": 4, "multStats": 1.90, "pisoRolagem": 0.70, "pesoDropBase": 1.6 },
+    { "id": "mythic",    "nome": "Mítico",    "cor": "#EF4444", "numAfixos": 5, "multStats": 2.25, "pisoRolagem": 0.80, "pesoDropBase": 0.35 },
+    { "id": "divine",    "nome": "Divino",    "cor": "#22D3EE", "numAfixos": 6, "multStats": 2.70, "pisoRolagem": 0.88, "pesoDropBase": 0.05 }
+  ]
+}
