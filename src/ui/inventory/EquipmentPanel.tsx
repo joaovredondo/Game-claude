@@ -9,6 +9,7 @@ import { computeTotalGearScore, DEFAULT_GEAR_SCORE_WEIGHTS } from '../../core/it
 import { useInventoryStore } from '../../state/inventoryStore';
 import { refinement } from '../../data';
 import { RARITY_VAR } from '../theme';
+import ItemArt from '../components/ItemArt';
 
 const SLOT_LABELS: Record<Slot, string> = {
   weapon: 'Arma',
@@ -80,9 +81,16 @@ export default function EquipmentPanel() {
               key={slot}
               className="rounded-lg border border-white/10 bg-white/[0.02] p-2 text-center"
             >
-              <div className="text-[10px] uppercase tracking-wide text-slate-500">
+              <div className="mb-1 text-[10px] uppercase tracking-wide text-slate-500">
                 {SLOT_LABELS[slot]}
               </div>
+              <ItemArt
+                icon={item?.icon}
+                slot={slot}
+                weaponType={item?.weaponType}
+                rarity={item?.rarity}
+                size="lg"
+              />
               {item ? (
                 <>
                   <div

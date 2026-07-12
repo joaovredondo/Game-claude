@@ -7,6 +7,7 @@ function itemWith(atributosBase: Record<string, number>, afixos: Item['afixos'] 
     uid: crypto.randomUUID(),
     baseId: 'x',
     nome: 'X',
+    icon: 'x',
     slot: 'weapon',
     rarity: 'common',
     itemLevel: 1,

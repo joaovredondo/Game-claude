@@ -8,6 +8,7 @@ function itemOfRarity(rarity: Item['rarity'], refinoNivel = 0): Item {
     uid: crypto.randomUUID(),
     baseId: 'x',
     nome: 'X',
+    icon: 'x',
     slot: 'weapon',
     rarity,
     itemLevel: 1,

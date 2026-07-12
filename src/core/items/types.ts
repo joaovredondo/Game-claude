@@ -21,6 +21,8 @@ export interface Item {
   uid: string;
   baseId: string;
   nome: string;
+  /** Chave do asset de arte (ver docs/design/14-arte-de-itens.md) — copiada da ItemBase na geração. */
+  icon: string;
   slot: Slot;
   weaponType?: WeaponType;
   rarity: RarityId;

@@ -83,6 +83,7 @@ interface Item {
   uid: string;              // id único da instância
   baseId: string;
   nome: string;             // base + afixos + "+N"
+  icon: string;             // chave do asset de arte (ver design/14) — copiada da ItemBase
   slot: Slot;
   weaponType?: WeaponType;
   rarity: Rarity;

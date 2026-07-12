@@ -94,7 +94,8 @@ export const itemBaseSchema = z.object({
   nome: z.string(),
   slot: slotSchema,
   weaponType: weaponTypeSchema.optional(),
-  icon: z.string(),
+  // Vira chave de lookup do asset (`/items/{icon}.png`) — restringido para não quebrar a URL.
+  icon: z.string().regex(/^[a-z0-9_]+$/, 'icon deve conter só a-z, 0-9 e "_"'),
   nivelRequeridoBase: z.number().int().min(0),
   tierTematico: z.number().int().min(0),
   faixasBase: z.record(z.string(), rangeSchema),

@@ -111,6 +111,12 @@
 - ⬜ Momentos juicy (drop raro, sucesso/falha de refino)
 - ⬜ Responsividade mobile + acessibilidade (reduce-motion, contraste, teclado/toque)
 - ⬜ Som e feedback tátil
+- ✅ **Arte ilustrada de itens** (adiantado, 2026-07-12) — arquitetura completa:
+  `ItemArt` (imagem real quando existir + fallback vetorial gracioso por
+  slot/tipo de arma), integrado a `ItemCard` e `EquipmentPanel`; guia de
+  estilo e prompts prontos em `docs/design/14-arte-de-itens.md` +
+  `docs/design/art-prompts.json` (8 itens). Falta gerar as imagens em si
+  (nenhuma ferramenta de geração de imagem disponível neste ambiente ainda).
 
 ## Fase 7 — Persistência & Meta ⬜
 

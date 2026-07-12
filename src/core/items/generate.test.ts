@@ -21,6 +21,7 @@ describe('generateItem', () => {
 
     expect(item.uid).toBeTruthy();
     expect(item.baseId).toBe('espada_ferro');
+    expect(item.icon).toBe(espada.icon);
     expect(item.slot).toBe('weapon');
     expect(item.weaponType).toBe('sword');
     expect(item.rarity).toBe('rare');

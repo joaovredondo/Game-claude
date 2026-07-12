@@ -8,6 +8,7 @@ function itemOf(overrides: Partial<Item>): Item {
     uid: crypto.randomUUID(),
     baseId: 'x',
     nome: 'X',
+    icon: 'x',
     slot: 'weapon',
     weaponType: 'sword',
     rarity: 'common',

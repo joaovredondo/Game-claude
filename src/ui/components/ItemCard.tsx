@@ -6,6 +6,7 @@ import type { Item } from '../../core/items/types';
 import { resolveItemStats } from '../../core/items/stats';
 import { rarities, refinement } from '../../data';
 import { RARITY_VAR } from '../theme';
+import ItemArt from './ItemArt';
 
 export interface ItemCardActions {
   onEquip?: () => void;
@@ -68,22 +69,25 @@ export default function ItemCard({
         boxShadow: selected ? `0 0 0 2px ${cor}` : `0 0 24px -16px ${cor}`,
       }}
     >
-      <div className="flex items-center justify-between gap-2">
-        <span className="font-display text-sm font-bold" style={{ color: cor }}>
-          {item.nome}
-        </span>
-        <div className="flex shrink-0 items-center gap-1.5">
-          {item.bloqueado && (
-            <span title="Trancado" className="text-[11px]">
-              🔒
-            </span>
-          )}
-          <span
-            className="rounded-full px-2 py-0.5 text-[10px] font-bold"
-            style={{ color: cor, border: `1px solid ${cor}` }}
-          >
-            {rarityDef.nome}
+      <div className="flex items-start gap-3">
+        <ItemArt icon={item.icon} slot={item.slot} weaponType={item.weaponType} rarity={item.rarity} />
+        <div className="flex min-w-0 flex-1 items-center justify-between gap-2">
+          <span className="font-display text-sm font-bold" style={{ color: cor }}>
+            {item.nome}
           </span>
+          <div className="flex shrink-0 items-center gap-1.5">
+            {item.bloqueado && (
+              <span title="Trancado" className="text-[11px]">
+                🔒
+              </span>
+            )}
+            <span
+              className="rounded-full px-2 py-0.5 text-[10px] font-bold"
+              style={{ color: cor, border: `1px solid ${cor}` }}
+            >
+              {rarityDef.nome}
+            </span>
+          </div>
         </div>
       </div>
 

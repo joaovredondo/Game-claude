@@ -82,6 +82,7 @@ export function generateItem(rng: Rng, input: GenerateItemInput): Item {
     uid: crypto.randomUUID(),
     baseId: base.id,
     nome: formatItemName(base, afixos, afixDefsById, refino.nivel),
+    icon: base.icon,
     slot: base.slot,
     weaponType: base.weaponType,
     rarity: rarityId,

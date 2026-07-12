@@ -1,0 +1,62 @@
+{
+  "$schema": "Conteúdo de autoria (não validado em runtime) — ver docs/design/14-arte-de-itens.md",
+  "styleTemplate": "Ícone de item de RPG de fantasia sombria moderna, pintura digital semi-realista de alta qualidade (não pixel art, não ícone flat vetorial simples). Item centralizado ocupando cerca de 80% do quadro, composição quadrada 1:1. Fundo escuro em tons de ardósia e roxo profundo, com leve névoa e um brilho sutil de energia arcana ciano ao redor do item (referência: as \"Fraturas\" do jogo emitem uma energia ciano). Iluminação de estúdio dramática vindo de cima e da lateral, alta definição de textura de material (metal, couro, pena, cristal, conforme o item). Sem texto, sem marca d'água, sem moldura desenhada (a moldura é aplicada depois via CSS). Resolução 1024x1024.",
+  "items": [
+    {
+      "iconId": "sword_iron",
+      "itemBaseId": "espada_ferro",
+      "nome": "Espada de Ferro",
+      "descricaoEspecifica": "Uma espada reta de ferro forjado, lâmina larga de dois gumes com leve pátina de uso, guarda simples em cruz, cabo envolto em couro escuro — visual funcional e robusto, arma inicial sem ornamentos.",
+      "promptFinal": "Ícone de item de RPG de fantasia sombria moderna, pintura digital semi-realista de alta qualidade (não pixel art, não ícone flat vetorial simples). Item centralizado ocupando cerca de 80% do quadro, composição quadrada 1:1. Fundo escuro em tons de ardósia e roxo profundo, com leve névoa e um brilho sutil de energia arcana ciano ao redor do item (referência: as \"Fraturas\" do jogo emitem uma energia ciano). Iluminação de estúdio dramática vindo de cima e da lateral, alta definição de textura de material (metal, couro, pena, cristal, conforme o item). Sem texto, sem marca d'água, sem moldura desenhada (a moldura é aplicada depois via CSS). Resolução 1024x1024. Uma espada reta de ferro forjado, lâmina larga de dois gumes com leve pátina de uso, guarda simples em cruz, cabo envolto em couro escuro — visual funcional e robusto, arma inicial sem ornamentos."
+    },
+    {
+      "iconId": "axe_war",
+      "itemBaseId": "machado_guerra",
+      "nome": "Machado de Guerra",
+      "descricaoEspecifica": "Um machado de guerra de duas mãos, cabeça larga em meia-lua com fio de batalha, cabo longo de madeira escura reforçado por anéis de ferro — visual pesado e brutal.",
+      "promptFinal": "Ícone de item de RPG de fantasia sombria moderna, pintura digital semi-realista de alta qualidade (não pixel art, não ícone flat vetorial simples). Item centralizado ocupando cerca de 80% do quadro, composição quadrada 1:1. Fundo escuro em tons de ardósia e roxo profundo, com leve névoa e um brilho sutil de energia arcana ciano ao redor do item (referência: as \"Fraturas\" do jogo emitem uma energia ciano). Iluminação de estúdio dramática vindo de cima e da lateral, alta definição de textura de material (metal, couro, pena, cristal, conforme o item). Sem texto, sem marca d'água, sem moldura desenhada (a moldura é aplicada depois via CSS). Resolução 1024x1024. Um machado de guerra de duas mãos, cabeça larga em meia-lua com fio de batalha, cabo longo de madeira escura reforçado por anéis de ferro — visual pesado e brutal."
+    },
+    {
+      "iconId": "bow_hunter",
+      "itemBaseId": "arco_cacador",
+      "nome": "Arco do Caçador",
+      "descricaoEspecifica": "Um arco longo recurvo de madeira escura polida, corda tensionada, empunhadura envolta em tiras de couro trançado — visual ágil e preciso, de caçador experiente.",
+      "promptFinal": "Ícone de item de RPG de fantasia sombria moderna, pintura digital semi-realista de alta qualidade (não pixel art, não ícone flat vetorial simples). Item centralizado ocupando cerca de 80% do quadro, composição quadrada 1:1. Fundo escuro em tons de ardósia e roxo profundo, com leve névoa e um brilho sutil de energia arcana ciano ao redor do item (referência: as \"Fraturas\" do jogo emitem uma energia ciano). Iluminação de estúdio dramática vindo de cima e da lateral, alta definição de textura de material (metal, couro, pena, cristal, conforme o item). Sem texto, sem marca d'água, sem moldura desenhada (a moldura é aplicada depois via CSS). Resolução 1024x1024. Um arco longo recurvo de madeira escura polida, corda tensionada, empunhadura envolta em tiras de couro trançado — visual ágil e preciso, de caçador experiente."
+    },
+    {
+      "iconId": "mace_holy",
+      "itemBaseId": "clave_sagrada",
+      "nome": "Clave Sagrada",
+      "descricaoEspecifica": "Uma clava sagrada com cabeça esférica facetada, gravada com runas douradas suavemente luminosas, cabo de metal claro — visual místico e sacerdotal, com um brilho dourado quente contrastando com o ambiente ciano.",
+      "promptFinal": "Ícone de item de RPG de fantasia sombria moderna, pintura digital semi-realista de alta qualidade (não pixel art, não ícone flat vetorial simples). Item centralizado ocupando cerca de 80% do quadro, composição quadrada 1:1. Fundo escuro em tons de ardósia e roxo profundo, com leve névoa e um brilho sutil de energia arcana ciano ao redor do item (referência: as \"Fraturas\" do jogo emitem uma energia ciano). Iluminação de estúdio dramática vindo de cima e da lateral, alta definição de textura de material (metal, couro, pena, cristal, conforme o item). Sem texto, sem marca d'água, sem moldura desenhada (a moldura é aplicada depois via CSS). Resolução 1024x1024. Uma clava sagrada com cabeça esférica facetada, gravada com runas douradas suavemente luminosas, cabo de metal claro — visual místico e sacerdotal, com um brilho dourado quente contrastando com o ambiente ciano."
+    },
+    {
+      "iconId": "chest_steel",
+      "itemBaseId": "peitoral_aco",
+      "nome": "Peitoral de Aço",
+      "descricaoEspecifica": "Um peitoral de placas de aço polido, design funcional de guerreiro, correias de couro cruzadas nos ombros, reflexos metálicos frios e nítidos.",
+      "promptFinal": "Ícone de item de RPG de fantasia sombria moderna, pintura digital semi-realista de alta qualidade (não pixel art, não ícone flat vetorial simples). Item centralizado ocupando cerca de 80% do quadro, composição quadrada 1:1. Fundo escuro em tons de ardósia e roxo profundo, com leve névoa e um brilho sutil de energia arcana ciano ao redor do item (referência: as \"Fraturas\" do jogo emitem uma energia ciano). Iluminação de estúdio dramática vindo de cima e da lateral, alta definição de textura de material (metal, couro, pena, cristal, conforme o item). Sem texto, sem marca d'água, sem moldura desenhada (a moldura é aplicada depois via CSS). Resolução 1024x1024. Um peitoral de placas de aço polido, design funcional de guerreiro, correias de couro cruzadas nos ombros, reflexos metálicos frios e nítidos."
+    },
+    {
+      "iconId": "wings_leather",
+      "itemBaseId": "asa_couro",
+      "nome": "Asas de Couro",
+      "descricaoEspecifica": "Um par de asas membranosas de couro curtido, textura áspera e resistente, estrutura óssea visível nas bordas — visual rústico e inicial, como as de uma criatura jovem das sombras.",
+      "promptFinal": "Ícone de item de RPG de fantasia sombria moderna, pintura digital semi-realista de alta qualidade (não pixel art, não ícone flat vetorial simples). Item centralizado ocupando cerca de 80% do quadro, composição quadrada 1:1. Fundo escuro em tons de ardósia e roxo profundo, com leve névoa e um brilho sutil de energia arcana ciano ao redor do item (referência: as \"Fraturas\" do jogo emitem uma energia ciano). Iluminação de estúdio dramática vindo de cima e da lateral, alta definição de textura de material (metal, couro, pena, cristal, conforme o item). Sem texto, sem marca d'água, sem moldura desenhada (a moldura é aplicada depois via CSS). Resolução 1024x1024. Um par de asas membranosas de couro curtido, textura áspera e resistente, estrutura óssea visível nas bordas — visual rústico e inicial, como as de uma criatura jovem das sombras."
+    },
+    {
+      "iconId": "wings_spirit",
+      "itemBaseId": "asa_espirito",
+      "nome": "Asas Espirituais",
+      "descricaoEspecifica": "Um par de asas etéreas semi-transparentes formadas por energia espiritual azul-esverdeada, penas parcialmente dissolvidas em partículas de luz flutuantes — visual etéreo e místico.",
+      "promptFinal": "Ícone de item de RPG de fantasia sombria moderna, pintura digital semi-realista de alta qualidade (não pixel art, não ícone flat vetorial simples). Item centralizado ocupando cerca de 80% do quadro, composição quadrada 1:1. Fundo escuro em tons de ardósia e roxo profundo, com leve névoa e um brilho sutil de energia arcana ciano ao redor do item (referência: as \"Fraturas\" do jogo emitem uma energia ciano). Iluminação de estúdio dramática vindo de cima e da lateral, alta definição de textura de material (metal, couro, pena, cristal, conforme o item). Sem texto, sem marca d'água, sem moldura desenhada (a moldura é aplicada depois via CSS). Resolução 1024x1024. Um par de asas etéreas semi-transparentes formadas por energia espiritual azul-esverdeada, penas parcialmente dissolvidas em partículas de luz flutuantes — visual etéreo e místico."
+    },
+    {
+      "iconId": "wings_archangel",
+      "itemBaseId": "asa_arcanjo",
+      "nome": "Asas de Arcanjo",
+      "descricaoEspecifica": "Um par de asas grandiosas de penas brancas e douradas, brilho celestial intenso emanando das pontas, imponentes e majestosas — visual sagrado e poderoso, contrastando luz dourada quente com o fundo escuro.",
+      "promptFinal": "Ícone de item de RPG de fantasia sombria moderna, pintura digital semi-realista de alta qualidade (não pixel art, não ícone flat vetorial simples). Item centralizado ocupando cerca de 80% do quadro, composição quadrada 1:1. Fundo escuro em tons de ardósia e roxo profundo, com leve névoa e um brilho sutil de energia arcana ciano ao redor do item (referência: as \"Fraturas\" do jogo emitem uma energia ciano). Iluminação de estúdio dramática vindo de cima e da lateral, alta definição de textura de material (metal, couro, pena, cristal, conforme o item). Sem texto, sem marca d'água, sem moldura desenhada (a moldura é aplicada depois via CSS). Resolução 1024x1024. Um par de asas grandiosas de penas brancas e douradas, brilho celestial intenso emanando das pontas, imponentes e majestosas — visual sagrado e poderoso, contrastando luz dourada quente com o fundo escuro."
+    }
+  ]
+}
