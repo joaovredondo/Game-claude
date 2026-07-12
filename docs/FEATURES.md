@@ -4,7 +4,7 @@
 
 **Status:** ⬜ Pendente · 🟨 Em andamento · ✅ Concluído · 🧊 Adiado
 
-**Última atualização:** 2026-07-12 — _Fase 2 (Inventário & Equipamento) concluída (commit `861d023`)._
+**Última atualização:** 2026-07-12 — _Fase 3 (Refino & Forja Ativa) concluída (commit `ccfd187`)._
 
 ---
 
@@ -15,13 +15,13 @@
 | 0 — Fundações | 7 | 7 | ✅ 100% |
 | 1 — Núcleo de Itens | 7 | 7 | ✅ 100% |
 | 2 — Inventário & Equipamento | 6 | 6 | ✅ 100% |
-| 3 — Refino & Forja Ativa | 8 | 0 | 0% |
+| 3 — Refino & Forja Ativa | 8 | 8 | ✅ 100% |
 | 4 — Combate & Fraturas | 7 | 0 | 0% |
 | 5 — Progressão & Economia | 6 | 0 | 0% |
 | 6 — Polish Visual | 5 | 0 | 0% |
 | 7 — Persistência & Meta | 5 | 0 | 0% |
 | 8 — Conteúdo & Live-ops | 5 | 0 | 0% |
-| **TOTAL** | **56** | **20** | **35.7%** |
+| **TOTAL** | **56** | **28** | **50%** |
 
 ---
 
@@ -64,14 +64,14 @@ Colunas: **ID · Feature · Status · Doc de referência · Data · Commit**
 ### Fase 3 — Refino & Forja Ativa
 | ID | Feature | Status | Ref | Data | Commit |
 |----|---------|--------|-----|------|--------|
-| F3.1 | Config de refino data-driven | ⬜ | design/05,13 | — | — |
-| F3.2 | Cálculo de chance final | ⬜ | design/05 | — | — |
-| F3.3 | Resolução de refino (sucesso/-1/destrói) | ⬜ | design/05 | — | — |
-| F3.4 | Selo de Proteção | ⬜ | design/05 | — | — |
-| F3.5 | Bônus de stats por nível de refino | ⬜ | design/05 | — | — |
-| F3.6 | Forja Ativa (mini-jogo de precisão) | ⬜ | design/05 | — | — |
-| F3.7 | Modo auto-forja (acessibilidade) | ⬜ | design/05,11 | — | — |
-| F3.8 | UI da Forja + log de tentativas | ⬜ | design/05,11 | — | — |
+| F3.1 | Config de refino data-driven | ✅ | design/05,13 | 2026-07-12 | ccfd187 |
+| F3.2 | Cálculo de chance final | ✅ | design/05 | 2026-07-12 | ccfd187 |
+| F3.3 | Resolução de refino (sucesso/-1/destrói) | ✅ | design/05 | 2026-07-12 | ccfd187 |
+| F3.4 | Selo de Proteção | ✅ | design/05 | 2026-07-12 | ccfd187 |
+| F3.5 | Bônus de stats por nível de refino | ✅ | design/05 | 2026-07-12 | ccfd187 |
+| F3.6 | Forja Ativa (mini-jogo de precisão) | ✅ | design/05 | 2026-07-12 | ccfd187 |
+| F3.7 | Modo auto-forja (acessibilidade) | ✅ | design/05,11 | 2026-07-12 | ccfd187 |
+| F3.8 | UI da Forja + log de tentativas | ✅ | design/05,11 | 2026-07-12 | ccfd187 |
 
 ### Fase 4 — Combate & Fraturas
 | ID | Feature | Status | Ref | Data | Commit |
