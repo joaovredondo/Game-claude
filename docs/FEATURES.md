@@ -4,7 +4,7 @@
 
 **Status:** ⬜ Pendente · 🟨 Em andamento · ✅ Concluído · 🧊 Adiado
 
-**Última atualização:** 2026-07-12 — _Fase 3 (Refino & Forja Ativa) concluída (commit `ccfd187`)._
+**Última atualização:** 2026-07-12 — _Arte ilustrada de itens: arquitetura + fallback + prompts (commit `385147c`), adiantado da Fase 6._
 
 ---
 
@@ -18,10 +18,10 @@
 | 3 — Refino & Forja Ativa | 8 | 8 | ✅ 100% |
 | 4 — Combate & Fraturas | 7 | 0 | 0% |
 | 5 — Progressão & Economia | 6 | 0 | 0% |
-| 6 — Polish Visual | 5 | 0 | 0% |
+| 6 — Polish Visual | 6 | 1 | 16.7% |
 | 7 — Persistência & Meta | 5 | 0 | 0% |
 | 8 — Conteúdo & Live-ops | 5 | 0 | 0% |
-| **TOTAL** | **56** | **28** | **50%** |
+| **TOTAL** | **57** | **29** | **50.9%** |
 
 ---
 
@@ -102,6 +102,7 @@ Colunas: **ID · Feature · Status · Doc de referência · Data · Commit**
 | F6.3 | Momentos juicy | ⬜ | design/11 | — | — |
 | F6.4 | Responsividade + acessibilidade | ⬜ | design/11 | — | — |
 | F6.5 | Som e feedback | ⬜ | design/11 | — | — |
+| F6.6 | Arte ilustrada de itens (arquitetura + prompts) | ✅ | design/14 | 2026-07-12 | 385147c |
 
 ### Fase 7 — Persistência & Meta
 | ID | Feature | Status | Ref | Data | Commit |
